@@ -8,32 +8,38 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script defer src="script.js"></script>
 </head>
 <body>
   <!-- HERO -->
   <header class="header" id="top">
+    <div class="header__bar">
+      <button id="themeToggle" class="btn small" aria-label="Переключить тему">🌙 Тёмная</button>
+    </div>
+
     <img src="assets/avatar.jpg" alt="Anton Ilinskiy" class="avatar"/>
     <h1>Anton Ilinskiy</h1>
     <p class="subtitle">Python Backend &amp; Telegram Bots Developer</p>
     <div class="actions">
       <a href="#projects" class="btn primary">Мои проекты</a>
       <a href="#about" class="btn ghost">Обо мне</a>
+      <a href="#weather" class="btn ghost">Погода</a>
     </div>
   </header>
 
+  <!-- ABOUT -->
   <section class="about" id="about">
     <div class="container">
       <h2>Обо мне</h2>
       <p>
-        Разрабатываю Telegram-ботов на <b>Python</b> (aiogram 3), настраиваю хранение данных на
-        <b>SQLAlchemy + SQLite/PostgreSQL</b>, добавляю фоновую логику и напоминания через <b>APScheduler</b>.
-        Люблю понятную архитектуру, аккуратные README и быструю доставку MVP.
+        Разрабатываю Telegram-ботов на <b>Python</b> (aiogram 3), хранение — <b>SQLAlchemy + SQLite/PostgreSQL</b>,
+        фоновые задачи через <b>APScheduler</b>. Люблю понятную архитектуру и быстрый MVP.
       </p>
       <ul class="highlights">
-        <li>⚙️ Чистые хендлеры, сервисные слои и CRUD</li>
-        <li>🗄️ Миграции/перенос на Postgres при необходимости</li>
-        <li>⏰ Планировщик напоминаний и фоновых задач</li>
-        <li>🧪 Простые сценарии тестирования и чек-листы</li>
+        <li>⚙️ Чистые хендлеры, сервисы и CRUD</li>
+        <li>🗄️ Перенос на Postgres при необходимости</li>
+        <li>⏰ Планировщик напоминаний</li>
+        <li>🧪 Простые сценарии тестов</li>
       </ul>
       <div class="socials">
         <a href="https://github.com/AntonIlinskiy" target="_blank" aria-label="GitHub" class="icon gh">
@@ -48,38 +54,69 @@
           </svg>
           <span>Telegram</span>
         </a>
-        </div>
-    </div>
-  </section>
-
-  <section class="projects" id="projects">
-    <div class="container">
-      <h2>Проекты</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>🚗 Service Booking Bot</h3>
-          <p>Бот записи автомобилей на ТО: выбор услуги, мастера, слота; напоминания и история записей.</p>
-          <div class="tags">
-            <span>aiogram 3</span><span>SQLAlchemy</span><span>APScheduler</span>
-          </div>
-        </article>
-        <article class="card">
-          <h3>🏋️ Health Bot</h3>
-          <p>ЗОЖ-бот: анкета, нормы ккал/БЖУ, тренировки (неделя/сегодня), история и стрик, напоминания.</p>
-          <div class="tags">
-            <span>aiogram 3</span><span>SQLAlchemy</span><span>APScheduler</span>
-          </div>
-        </article>
-        <article class="card">
-          <h3>🏗️ Construction Bot</h3>
-          <p>Каталог услуг по ремонту/строительству, портфолио, сбор контактов, аккуратная навигация.</p>
-          <div class="tags">
-            <span>aiogram 3</span><span>SQLite</span>
-          </div>
-        </article>
       </div>
     </div>
   </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <h2>Проекты</h2>
+
+      <div class="grid">
+        <!-- Сделал карточки ссылками: кликабельны целиком -->
+        <a class="card link" href="https://github.com/AntonIlinskiy/portfolio-projects/tree/main/service-booking-bot" target="_blank" rel="noopener">
+          <h3>🚗 Service Booking Bot</h3>
+          <p>Запись авто на ТО: выбор услуги/мастера/слота; напоминания; история записей.</p>
+          <div class="tags">
+            <span>aiogram 3</span><span>SQLAlchemy</span><span>APScheduler</span>
+          </div>
+        </a>
+
+        <a class="card link" href="https://github.com/AntonIlinskiy/portfolio-projects/tree/main/health-bot" target="_blank" rel="noopener">
+          <h3>🏋️ Health Bot</h3>
+          <p>Анкета, нормы ккал/БЖУ, тренировки (неделя/сегодня), история, стрик, напоминания.</p>
+          <div class="tags">
+            <span>aiogram 3</span><span>SQLAlchemy</span><span>APScheduler</span>
+          </div>
+        </a>
+
+        <a class="card link" href="https://github.com/AntonIlinskiy/portfolio-projects/tree/main/construction-bot" target="_blank" rel="noopener">
+          <h3>🏗️ Construction Bot</h3>
+          <p>Каталог услуг, портфолио, сбор контактов, аккуратная навигация.</p>
+          <div class="tags">
+            <span>aiogram 3</span><span>SQLite</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="weather" id="weather">
+    <div class="container">
+      <h2>Погода</h2>
+      <form id="weatherForm" class="weather__form">
+        <input id="city" type="text" placeholder="Город (например, Moscow)" required />
+        <button class="btn primary" type="submit">Показать</button>
+      </form>
+
+      <div id="weatherCard" class="weather__card hide" aria-live="polite">
+        <div class="w-row">
+          <img id="wIcon" src="" alt="" class="w-icon" />
+          <div>
+            <div id="wCity" class="w-city">—</div>
+            <div id="wDesc" class="w-desc">—</div>
+          </div>
+        </div>
+        <div class="w-temp">
+          <span id="wTemp">—</span><span class="unit">°C</span>
+        </div>
+        <div class="w-meta">
+          Влажн.: <span id="wHum">—</span>% · Ветер: <span id="wWind">—</span> м/с
+        </div>
+        <div id="wError" class="w-error hide"></div>
+      </div>
+</section>
 
   <footer class="footer">
     <div class="container">
