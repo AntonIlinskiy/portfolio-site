@@ -42,6 +42,11 @@ const dict = {
     proj1: "Запись авто на ТО: выбор услуги/мастера/слота; напоминания; история.",
     proj2: "Анкета, нормы ккал/БЖУ, тренировки (неделя/сегодня), история, стрик, напоминания.",
     proj3: "Каталог услуг, портфолио, сбор контактов, аккуратная навигация.",
+    statsTitle: "Статистика",
+    stats1: "Готовых бота",
+    stats2: "Года практики",
+    stats3: "Задач автоматизации",
+    skillsTitle: "Навыки",
     weatherTitle: "Погода",
     showBtn: "Показать",
     hum: "Влажн.:",
@@ -68,6 +73,11 @@ const dict = {
     proj1: "Car service booking: choose service/master/slot; reminders; history.",
     proj2: "Profile, calorie/macro norms, workouts (week/today), history, streak, reminders.",
     proj3: "Service catalog, portfolio, contacts collection, clean navigation.",
+    statsTitle: "Stats",
+    stats1: "Bots delivered",
+    stats2: "Years of practice",
+    stats3: "Automation tasks",
+    skillsTitle: "Skills",
     weatherTitle: "Weather",
     showBtn: "Show",
     hum: "Humidity:",
@@ -175,3 +185,46 @@ const navObs = new IntersectionObserver((entries) => {
   });
 },{threshold: 0.5});
 sections.forEach(id => { const el = document.getElementById(id); if (el) navObs.observe(el); });
+
+const pre = document.getElementById("preloader");
+window.addEventListener("load", () => {
+  setTimeout(() => pre?.classList.add("done"), 250);
+});
+
+/************ COUNTERS (on scroll) ************/
+function animateCounter(el, duration = 1200) {
+  const target = Number(el.getAttribute("data-target") || "0");
+  const start = 0;
+  const startTs = performance.now();
+  function tick(ts) {
+    const p = Math.min((ts - startTs) / duration, 1);
+    el.textContent = Math.floor(start + (target - start) * p);
+    if (p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+const counters = document.querySelectorAll(".counter");
+const countersObs = new IntersectionObserver((entries, obs) => {
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      animateCounter(en.target);
+      obs.unobserve(en.target); // запускать один раз
+    }
+  });
+}, { threshold: 0.6 });
+counters.forEach(c => countersObs.observe(c));
+
+
+const skillSection = document.querySelector(".skills");
+if (skillSection) {
+  const bars = skillSection.querySelectorAll(".fill");
+  const sbObs = new IntersectionObserver((entries, obs) => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        bars.forEach(b => b.style.width = getComputedStyle(b).getPropertyValue("--val").trim());
+        obs.disconnect(); // один раз
+      }
+    });
+  }, { threshold: 0.35 });
+  sbObs.observe(skillSection);
+}

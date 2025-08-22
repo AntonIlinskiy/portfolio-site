@@ -28,14 +28,20 @@
   <script defer src="script.js"></script>
 </head>
 <body>
+    <body>
+  <div id="preloader" class="preloader" aria-hidden="true">
+    <div class="spinner" aria-hidden="true"></div>
+    <div class="pl-text">Загрузка…</div>
+  </div>
+  
+
   <header class="header reveal" id="top">
+</div>
     <div class="header__bar">
       <div class="bar-left">
         <button id="langToggle" class="btn small" aria-label="Переключить язык" data-i18n="langBtn">EN</button>
       </div>
-      <div class="bar-right">
-        <a id="cvLink" class="btn small ghost" href="assets/cv_ru.docx" download data-i18n="downloadCV">⬇️ Скачать CV</a>
-        <button id="themeToggle" class="btn small" aria-label="Переключить тему">🌙 Тёмная</button>
+      <button id="themeToggle" class="btn small" aria-label="Переключить тему">🌙 Тёмная</button>
       </div>
     </div>
 
@@ -48,6 +54,23 @@
       <a href="#weather" class="btn ghost" data-i18n="ctaWeather">Погода</a>
     </div>
   </header>
+
+ <section class="cv reveal" id="cv">
+  <div class="container">
+    <h2>📄 Резюме</h2>
+    <p>Вы можете скачать моё резюме на русском или английском языке:</p>
+
+    <div class="cv-buttons">
+      <a href="assets/CV_RU.docx" download class="btn">
+        🇷🇺 Скачать CV (RU)
+      </a>
+      <a href="assets/CV_EN.docx" download class="btn alt">
+        🇬🇧 Download CV (EN)
+      </a>
+    </div>
+  </div>
+</section>
+
 
   <section class="about reveal" id="about">
     <div class="container">
@@ -78,6 +101,67 @@
       </div>
     </div>
   </section>
+
+    <section class="stats reveal" id="stats">
+    <div class="container">
+      <h2 data-i18n="statsTitle">Статистика</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="counter" data-target="3">0</div>
+          <div class="label" data-i18n="stats1">Готовых бота</div>
+        </div>
+        <div class="stat-card">
+          <div class="counter" data-target="2">0</div>
+          <div class="label" data-i18n="stats2">Года практики</div>
+        </div>
+        <div class="stat-card">
+          <div class="counter" data-target="10">0</div>
+          <div class="label" data-i18n="stats3">Задач автоматизации</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- SKILLS -->
+  <section class="skills reveal" id="skills">
+    <div class="container">
+      <h2 data-i18n="skillsTitle">Навыки</h2>
+      <div class="skills-grid">
+        <div class="skill">
+          <div class="row">
+            <span>Python</span><span>90%</span>
+          </div>
+          <div class="bar"><div class="fill" style="--val:90%"></div></div>
+        </div>
+        <div class="skill">
+          <div class="row">
+            <span>aiogram 3</span><span>85%</span>
+          </div>
+          <div class="bar"><div class="fill" style="--val:85%"></div></div>
+        </div>
+        <div class="skill">
+          <div class="row">
+            <span>SQLAlchemy</span><span>80%</span>
+          </div>
+          <div class="bar"><div class="fill" style="--val:80%"></div></div>
+        </div>
+        <div class="skill">
+          <div class="row">
+            <span>APScheduler</span><span>75%</span>
+          </div>
+          <div class="bar"><div class="fill" style="--val:75%"></div></div>
+        </div>
+        <div class="skill">
+          <div class="row">
+            <span>FastAPI</span><span>70%</span>
+          </div>
+          <div class="bar"><div class="fill" style="--val:70%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
 
   <section class="projects reveal" id="projects">
     <div class="container">

@@ -160,3 +160,81 @@ html.dark .icon.tg{ background:#0284c7; }
 html.dark .btn.active {
   box-shadow: 0 8px 18px rgba(0,0,0,.35);
 }
+
+.cv {
+  padding: 44px 0;
+  text-align: center;
+}
+
+.cv-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.cv-buttons .btn {
+  padding: 10px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #fff;
+  background: var(--brand-1);
+  transition: background 0.3s ease;
+}
+
+.cv-buttons .btn:hover {
+  background: var(--brand-2);
+}
+
+.cv-buttons .btn.alt {
+  background: #374151;
+}
+
+.cv-buttons .btn.alt:hover {
+  background: #111827;
+}
+
+.preloader{
+  position: fixed; inset: 0; z-index: 9999;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  background: var(--bg); color: var(--text);
+  transition: opacity .4s ease, visibility .4s ease;
+}
+.preloader .spinner{
+  width:56px; height:56px; border-radius:50%;
+  border:4px solid rgba(0,0,0,.15);
+  border-top-color: var(--brand-1);
+  animation: spin 1s linear infinite; margin-bottom:10px;
+}
+html.dark .preloader .spinner{ border:4px solid rgba(255,255,255,.15); }
+@keyframes spin { to { transform: rotate(360deg); } }
+.preloader.done{ opacity:0; visibility:hidden; pointer-events:none; }
+
+/* ===== STATS ===== */
+.stats{ padding: 44px 0; }
+.stats h2{ text-align:center; margin-bottom:18px; font-size: clamp(22px, 3.6vw, 30px); }
+.stats-grid{
+  display:grid; gap:14px; grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+}
+.stat-card{
+  background:var(--card); border:1px solid var(--card-border); border-radius:16px;
+  padding:16px; text-align:center; box-shadow: var(--shadow-1);
+}
+.stat-card .counter{
+  font-size:38px; font-weight:800; line-height:1; margin-bottom:6px;
+}
+.stat-card .label{ color:var(--muted); }
+
+.skills{ padding: 44px 0; }
+.skills h2{ text-align:center; margin-bottom:18px; font-size: clamp(22px, 3.6vw, 30px); }
+.skills-grid{ display:grid; gap:12px; grid-template-columns: 1fr; max-width:680px; margin:0 auto; }
+.skill{ background:var(--card); border:1px solid var(--card-border); border-radius:14px; padding:12px; box-shadow: var(--shadow-1); }
+.skill .row{ display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
+.skill .bar{ width:100%; height:10px; background:#e5e7eb; border-radius:999px; overflow:hidden; }
+html.dark .skill .bar{ background:#1f2a44; }
+.skill .fill{
+  width:0; height:100%; background: linear-gradient(90deg, var(--brand-1), var(--brand-2));
+  border-radius:999px; transition: width 1s ease;
+}
