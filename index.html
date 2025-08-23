@@ -36,12 +36,12 @@
   
 
   <header class="header reveal" id="top">
-</div>
     <div class="header__bar">
       <div class="bar-left">
-        <button id="langToggle" class="btn small" aria-label="Переключить язык" data-i18n="langBtn">EN</button>
+        <button id="langToggle" class="btn small" data-i18n="langBtn">EN</button>
       </div>
-      <button id="themeToggle" class="btn small" aria-label="Переключить тему">🌙 Тёмная</button>
+    <div class="bar-right">
+      <button id="themeToggle" class="btn small" data-i18n="themeDark">🌙 Тёмная</button>
       </div>
     </div>
 
@@ -57,20 +57,14 @@
 
  <section class="cv reveal" id="cv">
   <div class="container">
-    <h2>📄 Резюме</h2>
-    <p>Вы можете скачать моё резюме на русском или английском языке:</p>
-
+    <h2 data-i18n="cvHeader">📄 Резюме</h2>
+    <p data-i18n="cvDesc">Вы можете скачать моё резюме на русском или английском языке:</p>
     <div class="cv-buttons">
-      <a href="assets/CV_RU.docx" download class="btn">
-        🇷🇺 Скачать CV (RU)
-      </a>
-      <a href="assets/CV_EN.docx" download class="btn alt">
-        🇬🇧 Download CV (EN)
-      </a>
+      <a id="cvRuLink" href="assets/CV_RU.docx" download class="btn" data-i18n="cvRu">🇷🇺 Скачать CV (RU)</a>
+      <a id="cvEnLink" href="assets/CV_EN.docx" download class="btn alt" data-i18n="cvEn">🇬🇧 Download CV (EN)</a>
     </div>
   </div>
 </section>
-
 
   <section class="about reveal" id="about">
     <div class="container">
